@@ -1,0 +1,13 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+dataframe = pd.read_csv("/Users/vivangupta/Desktop/bengaluru_yearly_2000_2024.csv")
+dataframe["Date"] = pd.to_datetime(dataframe["Year"], format="%Y")
+dataframe = dataframe.rename(columns={"Temp Max": "TempMax"})
+eachyear = dataframe[["Year", "TempMax"]]
+print(eachyear)
+plt.plot(eachyear["Year"], eachyear["TempMax"])
+plt.xlabel("Year")
+plt.ylabel("Temperature (°C)")
+plt.title("Bengaluru Temperature Trend (2000–2024)")
+plt.show()
+
